@@ -22,42 +22,42 @@ SkillDonate is an innovative web platform designed to connect skilled volunteers
 To run SkillDonate locally, follow these steps:
 
 1. Clone the SkillDonate repository:
-   ````
+   ```bash
    git clone https://github.com/umlamulankunzi/skill-donate-website.git
    ```
 
 2. Navigate to the project directory:
-   ````
+   ```bash
    cd skilldonate
    ```
 
 3. Create a virtual environment:
-   ````
+   ```bash
    python -m venv venv
    ```
 
 4. Activate the virtual environment:
    - For Windows:
-     ```
+     ```cmd
      venv\Scripts\activate
-     ```
+     ```bash
    - For macOS/Linux:
-     ```
+     ```bash
      source venv/bin/activate
      ```
 
 5. Install the project dependencies:
-   ````
+   ```bash
    pip install -r requirements.txt
    ```
 
 6. Set up the database and migrate models:
-   ````
+   ```bash
    python manage.py migrate
    ```
 
 7. Start the development server:
-   ````
+   ```bash
    python manage.py runserver
    ```
 
@@ -70,17 +70,17 @@ We welcome contributions to enhance SkillDonate and make it even more impactful.
 1. Fork the SkillDonate repository.
 
 2. Create a new branch for your feature or bug fix:
-   ````
+   ```bash
    git checkout -b feature/your-feature-name
    ```
 
 3. Make your modifications and commit your changes:
-   ````
+   ```bash
    git commit -m "Add your commit message"
    ```
 
 4. Push your branch to your forked repository:
-   ````
+   ```bash
    git push origin feature/your-feature-name
    ```
 
