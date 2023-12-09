@@ -40,7 +40,7 @@ To run SkillDonate locally, follow these steps:
    - For Windows:
      ```cmd
      venv\Scripts\activate
-     ```bash
+     ```
    - For macOS/Linux:
      ```bash
      source venv/bin/activate
