@@ -18,5 +18,13 @@ from django.contrib import admin
 from django.urls import path
 
 urlpatterns = [
+    path("", include("core.urls")),
     path('admin/', admin.site.urls),
+    path("charity/", include("charity.urls")),
+    path("search/", include("search.urls")),
+    path("skilldonate/auth/", include("app_auth.urls")),
+    path("volunteer/", include("volunteers.urls")),
 ]
+
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
