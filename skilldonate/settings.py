@@ -62,6 +62,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'skilldonate.urls'
 
+CSRF_TRUSTED_ORIGINS = ["https://skill-donate-website-production.up.railway.app"]
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
