@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ skill.charity.name }} Homepage</h1>
+  <p>
+      {{ skill.charity.description }}
+  </p>
+  <h3>Skills Required</h3>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+      {% for skill in skills %}
+          <div class="col">
+              <a href="{% url 'skill-required-detail' skill.id %}">
+                  <div class="card h-100">
+                      <div class="card-body">
+                          <h5 class="card-title"> {{ skill.name }} </h5>
+                          <p class="card-text"> {{ skill.description }} </p>
+                      </div>
+                      <div class="card-footer">
+                          <small class="text-body-secondary">{{ skill.created_at }}</small>
+                      </div>
+                  </div>
+              </a>
+        </div>
+      {% endfor %}
+  </div>
+{% endblock content %}

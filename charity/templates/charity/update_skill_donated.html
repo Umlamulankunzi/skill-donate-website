@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<div class="container-md">
+    <h3 class="fw-bold my-2">Update Skill Required</h3>
+    <form method="POST" action="{% url 'skill-required-update' skill_id %}">
+        {% csrf_token %}
+        {{ form | crispy}}
+        <button class="btn btn-primary" type="submit">Update Skill</button>
+    </form>
+</div>
+{% endblock content %}

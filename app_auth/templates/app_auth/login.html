@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container mt-lg-3 mt-md-2 mt-sm-1" style="max-width: 400px;">
+    <h2 class="text-center">Login</h2>
+    <hr/>
+    <form action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
+        {{ form | crispy }}
+        <input class="btn btn-primary w-25" type="submit" value="Login">
+    </form>
+    <div class="mt-3">
+        <p>
+            Forgot your password?
+            <a class="link-primary link-underline-opacity-0" href="{% url 'password-reset' %}" >
+                Reset Password?
+            </a>
+        </p>
+    </div>
+    <hr/>
+    <div class="mt-2 ">
+        <p class="mb-1 pb-0">Not yet registered?</p>
+        <a class="link-primary link-underline-opacity-0" href="{% url 'signup-volunteer' %}">Signup as a Volunteer</a><br>
+        <a class="link-primary link-underline-opacity-0" href="{% url 'signup-charity' %}">Signup as a Charity Organisation</a>
+    </div>
+    <hr/>
+</div>
+{% endblock content %}

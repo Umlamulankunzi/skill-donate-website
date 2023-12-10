@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div style="width: 40%; margin: auto; padding-top: 1rem;">
+    <h1>Volunteer Signup</h1>
+    <form action="{% url 'signup-volunteer' %}" method="POST">
+        {% csrf_token %}
+        {{ form | crispy }}
+        <input class="btn btn-primary" type="submit" value="Signup">
+    </form>
+    <p>Already registered?</p>
+    <a class="link-primary" href="{% url 'login' %}">Login Now</a><br>
+</div>
+{% endblock content %}
