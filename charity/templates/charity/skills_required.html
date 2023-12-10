@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Skills Required by Charity Organisations</h2>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+      {% for skill in skills %}
+          <div class="col">
+              <a class="nav-link" href="{% url 'skill-required-detail' skill.id %}">
+                  <div class="card border-primary h-100">
+                      <h5 class="card-header"> {{ skill.charity.name }} </h5>
+                      <div class="card-body">
+                          <h5 class="card-title"> {{ skill.skill_name }} </h5>
+                          <p class="card-text"> {{ skill.description }} </p>
+                      </div>
+                      <div class="card-footer">
+                          <small class="text-body-secondary">{{ skill.created_at }}</small>
+                      </div>
+                  </div>
+              </a>
+        </div>
+      {% endfor %}
+  </div>
+{% endblock content %}

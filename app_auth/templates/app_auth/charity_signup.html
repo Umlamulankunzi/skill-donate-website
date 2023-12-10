@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h1>Charity Organisation Signup</h1>
+    <form action="{% url 'signup-charity' %}" method="POST">
+        {% csrf_token %}
+        {{ form | crispy }}
+        <input class="btn btn-primary" type="submit" value="Signup">
+    </form>
+    <p>
+        Already registered?
+        <a class="link-primary" href="{% url 'login' %}">Login Now</a>
+    </p>
+
+{% endblock content %}
