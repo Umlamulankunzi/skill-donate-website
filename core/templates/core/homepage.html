@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <!----------------- HERO SECTION ------------------->
+    <div class="container">
+        <section class="hero text-center mt-2">
+          <h2>Unlock the Power of Skill Donation</h2>
+          <p class="lead">Welcome to skilldonate, where skills change lives! </p>
+
+          <p style="font-size: 1.1em;">
+            Join our community of volunteers and non-profits dedicated to making a difference. By sharing your skills, create meaningful impact and help non-profits thrive. Sign up now to connect with organizations seeking assistance. Together we can transform communities and forge a brighter future. <br/>
+
+            <strong>Take action today - become a skilldonate volunteer.</strong>
+          </p>
+          <a href="{% url 'login' %}" class="btn btn-primary mb-4">Get Started</a>
+
+          <div class="card-group gap-3">
+            <div class="card">
+              <img src="{% static 'images/tutoring.jpg' %}" class="card-img-top h-100" alt="man fixing electrical switch">
+            </div>
+            <div class="card">
+              <img src="{% static 'images/child-looking.jpg' %}" class="card-img-top h-100" alt="child looking">
+            </div>
+            <div class="card">
+              <img src="{% static 'images/tutoring-class.jpg' %}" class="card-img-top h-100" alt="volunteers sweeping street">
+            </div>
+          </div>
+        </section>
+
+      <!----------------- HERO SECTION END --------------->
+
+{% endblock content %}
