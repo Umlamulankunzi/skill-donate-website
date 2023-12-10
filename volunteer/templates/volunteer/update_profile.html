@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block content %}
-    <form method="POST" action="{% url 'volunteer-profile-update' %}">
+    <form method="POST" action="{% url 'volunteer-profile-update' request.user.id %}">
         {% csrf_token %}
         {{ form | crispy}}
         <button class="btn btn-primary" type="submit">Update Profile</button>

@@ -13,7 +13,23 @@
 
             <strong>Take action today - become a skilldonate volunteer.</strong>
           </p>
-          <a href="{% url 'login' %}" class="btn btn-primary mb-4">Get Started</a>
+          {% if request.user.is_authenticated %}
+            {% if request.user.is_charity %}
+              <div class="d-flex justify-contents-even">
+                <a href="{% url 'charity-home' %}" class="btn btn-success mb-4">Get Started</a>
+                <a href="{% url 'charity-home' %}" class="btn btn-primary mb-4">Create Skill request</a>
+                <a href="{% url 'charity-home' %}" class="btn btn-warning mb-4">View Donated Skills</a>
+              </div>
+            {% else %}
+              <div class="d-flex justify-content-around">
+                <a href="{% url 'volunteer-home' %}" class="btn btn-success mb-4">Get Started</a>
+                <a href="{% url 'create-skill-donation' %}" class="btn btn-primary mb-4">Donate skill</a>
+                <a href="{% url 'charities-skills-required' %}" class="btn btn-warning mb-4">View Required Skills</a>
+              </div>
+            {% endif %}
+          {% else %}
+            <a href="{% url 'login' %}" class="btn btn-primary mb-4">Get Started</a>
+          {% endif %}
 
           <div class="card-group gap-3">
             <div class="card">

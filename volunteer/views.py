@@ -31,26 +31,11 @@ def update_profile(request, volunteer_id):
         form = ProfileUpdateForm(request.POST, instance=volunteer)
         if form.is_valid():
             form.save()
-            url = reverse('volunteer-profile', args=[user_id])
+            url = reverse('volunteer-profile', args=[user.id])
             return redirect(url)
     else:
         form = ProfileUpdateForm(instance=volunteer)
     return render(request, 'volunteer/update_profile.html', {'form': form})
-
-# @login_required
-# @volunteer_required
-# def update_profile(request, volunteer_id):
-#     user = get_object_or_404(User, id=volunteer_id)
-#     if request.method == "POST":
-#         # Update the profile and redirect to profile
-#         form = UserProfileForm(request.POST, instance=user)
-#         if form.is_valid():
-#             form.save()
-#             url = reverse('volunteer-profile', args=[volunteer_id])
-#             return redirect(url)
-#     else:
-#         form = VolunteerSignUpForm(instance=user)
-#     return render(request, 'volunteer/update_profile.html', {'form': form})
 
 
 
