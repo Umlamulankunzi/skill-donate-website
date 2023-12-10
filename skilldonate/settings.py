@@ -99,8 +99,8 @@ DATABASES = {
         'USER': config('MYSQLUSER'),
         'PASSWORD': config('MYSQL_ROOT_PASSWORD'),
         'HOST': config('MYSQLHOST'),
-        'PORT': config('MYSQLPORT'),
-    }
+        'PORT': int(config('MYSQLPORT')),
+    },
 }
 
 
