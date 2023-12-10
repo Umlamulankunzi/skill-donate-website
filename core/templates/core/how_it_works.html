@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block custom_styling %}
+  <link rel="stylesheet" href="{% static 'styles/how_it_works.css' %}">
+{% endblock custom_styling %}
+
+
+{% block content %}
+<div id="jumbotron" class="d-flex container-md">
+    <div class="mt-2 p-2 text-black rounded jumbo-text">
+        <h1 id="jumbo_header">How it works</h1>
+        <p class="lead" id="jumbo_text">
+            This guide explains how our website functions!
+            We aim to give you an overview of how the platform works
+            and how it can work for you to achieve great things.
+        </p>
+    </div>
+</div>
+<div class="d-flex container-sm row mt-3">
+  <div class="col-sm-6">
+    <h3>Volunteers</h3>
+    <p>
+      Volunteers who wish to engage Charity Organisations by donating their skills and time, can
+      use this Skill donate platform, to register a simple account and start offer their skills
+      for donation or they can also offer to donate to skill requirements posted by Charity
+      Organisations on the platform, by showing their interest, or contacting the Organisation.
+    </p>
+    <p>As a Volunteer you can:</p>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item ms-0 ps-0">
+        <a class="nav-link text-primary-emphasis" href="{% url 'signup-volunteer' %}">
+          <b>Create an account:</b>
+        </a>
+        Sign up as a volunteer on skilldonate by providing your personal information and
+        creating a secure login. Once registered as a volunteer, you'll have full access
+        to the skilldonate platform and its features.
+      </li>
+
+      <li class="list-group-item ps-0">
+        <a class="nav-link text-primary-emphasis" href="{% url 'charities-skills-required' %}">
+          <b>Browse Skill Requirements:</b>
+        </a>
+          As a volunteer you can browse through the skill requirements posted by non-profit
+          organizations. These requirements represent the specific skills they are seeking
+          assistance with. If you find a match for a skill you possess, you can show your
+          interest by indicating that you can help. This will Let non-profits know that
+          you're available to contribute your expertise.
+      </li>
+
+      <li class="list-group-item ps-0">
+        <a class="nav-link text-primary-emphasis" href="{% url 'create-skill-donation' %}">
+          <b>Post Skill Donations:</b>
+        </a>
+        Alternatively, Volunteers can post the specific skills they would like to donate on the
+        platform and wait for Charity Organisations to show interest in the donated skills.
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-sm-6">
+    <h3>Charity Organisations</h3>
+    <p>
+      Charity Organisations who are seeking donations in the form of skills from skilled
+      volunteers can register on the platform and connect with volunteers wishing to donate
+      their skills. Charity Organisations, you can also browse donated skills posted by volunteers
+      organizations. These skills are skills which volunteers are willing to donate to Charity
+      Organisations.
+    </p>
+    <p>As a Charity Organisation you can:</p>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item ps-0">
+        <a class="nav-link text-primary-emphasis" href="{% url 'signup-volunteer' %}">
+          <b>Create an account:</b>
+        </a>
+        Charity organizations can register on the skilldonate platform to access the full features
+        and functionalities.
+      </li>
+
+      <li class="list-group-item ps-0">
+        <a class="nav-link text-primary-emphasis" href="{% url 'volunteers-skills-donated' %}">
+          <b>Browse Donated Skills:</b>
+        </a>
+          Charity Organisations can browse the skills posted by volunteers and select the ones they
+          require for their projects or initiatives.
+      </li>
+
+      <li class="list-group-item ps-0">
+        <a class="nav-link text-primary-emphasis" href="{% url 'create-skill-required' %}">
+          <b>Post Skill Requirements:</b>
+        </a>
+        Alternatively, Charity Organisations can post the specific skills they require on the platform
+        and wait for volunteers to show interest and offer their skills.
+      </li>
+
+      <li class="list-group-item ps-0">
+        <a class="nav-link text-primary-emphasis" href="{% url 'charity-testimonials' %}">
+          <b>Sharing experiences:</b>
+        </a>
+        Charity Organizations can also post testimonials on the platform, sharing their experiences
+        of working with skilled volunteers and the positive impact created.
+      </li>
+    </ul>
+  </div>
+</div>
+
+{% endblock content %}

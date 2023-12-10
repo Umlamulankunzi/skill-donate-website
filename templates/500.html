@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex align-items-center justify-content-center vh-100">
+    <div class="text-center">
+        <h1 class="display-1 fw-bold">500</h1>
+        <p class="fs-3"> <span class="text-danger">Error!</span> Internal Server Error.</p>
+        <p class="lead">
+            The server encountered an internal error or misconfiguration and was
+            unable to complete your request. <br/>Please refresh the page or try again at a later time.
+        </p>
+        <a href="{% url 'home' %}" class="btn btn-primary">Go to homepage</a>
+    </div>
+</div>
+{% endblock content %}
