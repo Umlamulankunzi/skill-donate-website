@@ -29,7 +29,7 @@ DEBUG = False
 if config('ENV') == config('DEV_ENV'):
     DEBUG = True
 
-ALLOWED_HOSTS = ['skill-donate-website-production.up.railway.app', ]
+ALLOWED_HOSTS = ['*', ]
 
 
 # Application definition
