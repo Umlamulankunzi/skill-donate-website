@@ -49,11 +49,7 @@
 
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">{{ object.name }}</h4>
-          <p class="card-text">
-            Volunteer name: {{ object.volunteer.name }}
-            {{ object.volunteer.last_name }}
-          </p>
+          <h4 class="card-title">Volunteer: {{ object.name }} {{ object.last_name }}</h4>
           <p class="card-text"> City: {{ object.city }}</p>
           <p class="card-text"> Country: {{ object.country }}</p>
           <a href="{% url 'volunteer-profile' object.user.id %}" class="btn btn-primary stretched-link">See More</a>

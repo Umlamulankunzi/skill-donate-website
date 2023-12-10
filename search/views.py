@@ -33,7 +33,7 @@ def search(request):
         elif category == '3':  # Search Charity objects
             search_results = Charity.objects.filter(name__icontains=query)
         elif category == '4':  # Search Volunteer objects
-            search_results = Volunteer.objects.filter(name=query)
+            search_results = Volunteer.objects.filter(name__icontains=query)
 
         context = {
             'category': category,

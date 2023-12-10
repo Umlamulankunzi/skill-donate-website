@@ -25,7 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+if config('ENV') == config('DEV_ENV'):
+    DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -121,6 +123,14 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTH_USER_MODEL = 'app_auth.User'
 LOGIN_REDIRECT_URL = 'volunteer-home'
 LOGIN_URL = 'login'
+
+# Email config
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_USE_TLS = True
+EMAIL_PORT = int(config('EMAIL_PORT'))
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 
 # Internationalization

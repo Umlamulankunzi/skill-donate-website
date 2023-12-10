@@ -3,6 +3,7 @@ from django.core.mail import send_mail
 from .forms import ContactForm, TestimonialForm
 from django.core.exceptions import PermissionDenied
 from django.contrib.auth.decorators import login_required
+from skilldonate.settings import EMAIL_HOST_USER
 
 
 def home(request):
@@ -24,17 +25,14 @@ def contact(request):
         email = form.cleaned_data['email']
         message = form.cleaned_data['message']
 
-        # TODO: configure settings of project for this section
-        # to send messages to admins from the contact form
+        # Configure the email
+        subject = f'Skill Donate User: Message from {name}'
+        message = f'Name: {name}\nEmail: {email}\nMessage: {message}'
+        from_email = EMAIL_HOST_USER
+        recipient_list = ['umlamulankunzi@gmail.com', ]
 
-        # # Configure the email
-        # subject = f'Skill Donate User: Message from {name}'
-        # message = f'Name: {name}\nEmail: {email}\nMessage: {message}'
-        # from_email = 'no_reply@skilldonate.com'
-        # recipient_list = ['admin@skilldonate.com']
-
-        # # Send the email
-        # send_mail( subject, message, from_email, recipient_list)
+        # Send the email
+        send_mail( subject, message, from_email, recipient_list)
 
         # Redirect after success
         return HttpResponse(f"Form Submitted\n{message}")
