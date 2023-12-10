@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="col-lg-4">
+    <!-- <img href="#" class="bd-placeholder-img rounded-circle" width="140" height="140" role="img"/> -->
+    <h2 class="fw-normal">{{ user.volunteer.name }} {{ user.volunteer.last_name }}</h2>
+    <p><b>Phone: </b>{{ user.volunteer.phone }}</p>
+    <p><b>City: </b>{{ user.volunteer.city }}</p>
+    <p><b>Country: </b>{{ user.volunteer.country }}</p>
+
+    {% if request.user.is_authenticated and request.user == user %}
+        <a href="{% url 'volunteer-profile-update' user.id %}" class="btn btn-success">Update profile&raquo;</a>
+    {% endif %}
+
+  </div>
+
+{% endblock content %}

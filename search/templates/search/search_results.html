@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h1>Results</h1>
+
+{% if results|length > 0 %}
+
+  {% for object in results %}
+
+    {% if category == '1' %}
+
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">{{ object.skill_name }}</h4>
+          <p class="card-text"> Skill Donated by:
+            {{ object.volunteer.name }} {{ object.volunteer.last_name }}
+          </p>
+          <p class="card-text"> Posted on: {{ object.created_at }} </p>
+          <a href="{% url 'skill-donated-detail' object.id %}" class="btn btn-primary stretched-link">See More</a>
+        </div>
+      </div>
+
+    {% elif category == '2' %}
+
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">{{ object.skill_name }}</h4>
+          <p class="card-text"> Skill Required by: {{ object.charity.name }}</p>
+          <p class="card-text"> Posted on: {{ object.created_at }} </p>
+          <a href="{% url 'skill-required-detail' object.id %}" class="btn btn-primary stretched-link">See More</a>
+        </div>
+      </div>
+
+    {% elif category == '3' %}
+
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">{{ object.name }}</h4>
+          <p class="card-text"> Charity name: {{ object.charity.name }}</p>
+          <p class="card-text"> City: {{ object.city }}</p>
+          <p class="card-text"> Country: {{ object.country }}</p>
+          <a href="{% url 'charity-profile' object.user.id %}" class="btn btn-primary stretched-link">See More</a>
+        </div>
+      </div>
+
+    {% elif category == '4' %}
+
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">{{ object.name }}</h4>
+          <p class="card-text">
+            Volunteer name: {{ object.volunteer.name }}
+            {{ object.volunteer.last_name }}
+          </p>
+          <p class="card-text"> City: {{ object.city }}</p>
+          <p class="card-text"> Country: {{ object.country }}</p>
+          <a href="{% url 'volunteer-profile' object.user.id %}" class="btn btn-primary stretched-link">See More</a>
+        </div>
+      </div>
+
+    {% endif %}
+
+  {% endfor %}
+
+{% else %}
+  <p>No results found</p>
+{% endif %}
+
+
+{% endblock content %}

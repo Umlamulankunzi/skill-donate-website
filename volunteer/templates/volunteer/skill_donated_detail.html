@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Skill Donated Detail View</h2>
+    <div class="card">
+        <h5 class="card-header"> {{ skill_donated.volunteer.name }} </h5>
+        <div class="card-body">
+          <h5 class="card-title">{{ skill_donated.skill_name }}</h5>
+          <p class="card-text">{{ skill_donated.description }}</p>
+          <!-- <a href="#" class="btn btn-primary">link</a> -->
+        </div>
+        <div class="card-footer text-body-secondary">
+
+            {% if request.user.is_charity %}
+                <a class="btn btn-success"
+                href="{% url 'show-interest-in-skill-donated' skill_donated.id %}">
+                   Show Interest
+                </a>
+            {% endif %}
+
+            {% if request.user.id == skill_donated.volunteer.user.id %}
+                <a class="btn btn-primary mb-1"
+                href="{% url 'skill-donated-update' skill_donated.id %}">
+                Edit skill
+                </a>
+            {% endif %}
+
+            <br> {{ skill_donated.created_at }}
+
+        </div>
+    </div>
+
+
+    {% comment %}
+        LISTING ALL VOLUNTEERS WHO SHOWED INTEREST IN POSTED SKILL
+        IF NO INTERESTS YET, WILL WRITE AS SUCH
+    {% endcomment %}
+
+    {% if interests|length > 0  %}
+        <p class="fw-medium text-primary-emphasis mt-2 ms-2"> {{ interests|length }} Charities interested in this skill so far</p>
+        <ul>
+            {% for interest in interests %}
+            <li><a href="{% url 'charity-profile' interest.Charity.user.id %}" >{{ interest.Charity.name }}</a></li>
+            {% endfor %}
+        </ul>
+
+    {% else %}
+        <p class="fw-medium text-primary-emphasis mt-2 ms-2">No Charities have shown interest yet</p>
+
+    {% endif %}
+
+{% endblock content %}

@@ -1,8 +1,7 @@
-"""search urls file"""
-
 from django.urls import path
 
-from . import views
+from .views import search
 
 urlpatterns = [
+    path("", search, name="search"),
 ]
