@@ -2,13 +2,75 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
+{% block custom_styling %}
+    <link rel="stylesheet" href="{% static 'styles/testimonial-form.css' %}">
+{% endblock custom_styling %}
+
+
 {% block content %}
-<div class="container-md">
-    <h3 class="d-inline-block">Create Testimonial</h3>
-    <form method="POST" action="{% 'testimonial-create' %}">
+<h3 class="fw-bold text-center">Create Testimonial</h3>
+
+<div class="justify-content-center testimonial-c-container c-width">
+    <form  class="form" method="POST" action="{% url 'testimonial-create' %}">
         {% csrf_token %}
         {{ form | crispy }}
-        <button class="btn btn-primary" type="submit">create</button>
+        <button class="btn btn-primary testimonial-c-btn" type="submit">Post</button>
     </form>
+</div>
+<div class="c-width">
+    <p>
+        Ready to make a difference? Take a few moments to write a testimonial about your experience
+        with SkillDonate. Your words can have a profound impact on our platform, inspire others, and
+        contribute to the growth of our community. We sincerely appreciate your time and feedback!
+    </p>
+    <p>
+        you for being a valued member of SkillDonate. Together, we can make SkillDonate an even better place!
+    </p>
+
+    <h4>Share Your Experience: Help Us Improve and Inspire Others!</h4>
+    <p>
+        At SkillDonate, we value your opinion and strive to provide the best user experience possible.
+        We believe that every user's feedback is valuable and can make a significant difference in shaping
+        our platform. That's why we encourage you to share your experience by posting a testimonial about
+        your journey with us!
+    </p>
+
+    <h5>Why should you consider posting a testimonial?</h5>
+    <ol>
+        <li>
+            <b>Help Us Improve:</b> Your feedback matters! By sharing your experience, you can help us
+            identify areas where we excel and areas where we can improve. Your valuable insights can
+            guide us in enhancing our services, fixing any issues, and making your future experiences
+            even better.
+        </li>
+
+        <li>
+            <b>Inspire Others:</b> Your story has the power to inspire others who are considering using
+            our platform. By sharing your positive experience, you can instill confidence in potential
+            users and encourage them to take advantage of the benefits we offer. Your testimonial can be
+            the deciding factor that helps someone make a positive change in their life.
+        </li>
+        <li>
+            <b>Build Trust and Credibility:</b> Testimonials are a powerful tool to build trust and
+            credibility. When prospective users see genuine testimonials from real people like you,
+            they feel reassured that our platform is reliable, trustworthy, and capable of delivering
+            the promised results. Your testimonial can help us establish a strong reputation and attract
+            more users.
+        </li>
+        <li>
+            <b>Express Your Appreciation:</b> Posting a testimonial is an excellent way to show your
+            appreciation for the positive experiences you've had with SkillDonate. It allows you to
+            acknowledge the hard work and dedication of our team and lets them know that their efforts
+            are making a real impact. Your testimonial can be a source of motivation for our team to
+            continue delivering exceptional service.
+        </li>
+
+        <li>
+            <b>Be Part of a Community:</b> By sharing your testimonial, you become an active member of
+            our community. You connect with like-minded individuals who have had similar experiences and
+            can engage in meaningful conversations. Your testimonial can foster a sense of belonging and
+            create a supportive environment where users can help and learn from each other.
+        </li>
+    </ol>
 </div>
 {% endblock content %}

@@ -2,8 +2,9 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <h1>Charity Organisation Signup</h1>
-    <form action="{% url 'signup-charity' %}" method="POST">
+<div class="signup-container">
+    <h1 class="signup-title text-center">Charity Organisation Signup</h1>
+    <form class="signup-form" action="{% url 'signup-charity' %}" method="POST">
         {% csrf_token %}
         {{ form | crispy }}
         <input class="btn btn-primary" type="submit" value="Signup">
@@ -12,5 +13,5 @@
         Already registered?
         <a class="link-primary" href="{% url 'login' %}">Login Now</a>
     </p>
-
+</div>
 {% endblock content %}

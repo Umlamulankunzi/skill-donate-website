@@ -92,7 +92,7 @@ class Volunteer(models.Model):
     def get_display_name(self):
         """Gets name to display in navbar of website
         """
-        display_name = name.split()[0]
+        display_name = self.name.split()[0]
         if len(display_name) > 10:
             return f"{display_name[:10]}.."
         return display_name

@@ -2,13 +2,19 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
+{% block custom_styling %}
+    <link rel="stylesheet" href="{% static 'styles/testimonial-form.css' %}">
+{% endblock custom_styling %}
+
+
+
 {% block content %}
-<div class="container-md">
-    <h3 class="d-inline-block">Update Testimonial</h3>
-    <form method="POST" action="{% 'testimonial-update' testimonial_id %}">
+<div class="justify-content-center testimonial-c-container">
+    <h3 class="fw-bold text-center">Update Testimonial</h3>
+    <form  class="form" method="POST" action="{% url 'testimonial-update' testimonial_id %}">
         {% csrf_token %}
         {{ form | crispy }}
-        <button class="btn btn-primary" type="submit">update</button>
+        <button class="btn btn-primary testimonial-c-btn" type="submit">Update</button>
     </form>
 </div>
 {% endblock content %}

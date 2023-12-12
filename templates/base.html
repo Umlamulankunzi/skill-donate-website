@@ -15,10 +15,9 @@
 
   </head>
   <body>
-    <div class="d-flex-column min-vh-100">
-
+    <div id="container">
     <!------------------ NAVBAR ---------------------------->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav id="header" class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid px-md-5">
         <a class="navbar-brand" href="{% url 'home' %}">
           <img width="23%" id="logo" src="{% static 'images/logo.png' %}" alt="Logo" class="d-inline-block align-text-center rounded">
@@ -37,7 +36,7 @@
                   <li><a class="dropdown-item" href="{% url 'create-skill-donation' %}">Donate skill</a></li>
                   <li><a class="dropdown-item" href="{% url 'charities-skills-required' %}">View Needed skills</a></li>
                   <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Testimonials</a></li>
+
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -47,16 +46,16 @@
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="{% url 'volunteers-skills-donated' %}">View Offered skills</a></li>
                   <li><a class="dropdown-item" href="{% url 'create-skill-required' %}">Request a skill</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Testimonials</a></li>
               </ul>
             </li>
             <li class="nav-item">
               <a class="nav-link text-light" href="{% url 'how-it-works' %}">How it works</a>
             </li>
             <li class="nav-item">
-              <a href="{% url 'search' %}" class="nav-link px-3 text-light">
-                Search
+              <a class="nav-link text-light" href="{% url 'testimonials' %}">Reviews</a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'search' %}" class="nav-link text-light">Search
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                 </svg>
@@ -74,13 +73,14 @@
                 <li><a class="dropdown-item" href="{% url 'charity-profile'  request.user.id %}">Profile</a></li>
                 <li><a class="dropdown-item" href="{% url 'charity-home' %}">Dashboard</a></li>
             {% else %}
-              <button type="button" class="btn btn-primary dropdown-toggle text-capitalize" data-bs-toggle="dropdown" aria-expanded="false">
+                <button type="button" class="btn btn-primary dropdown-toggle text-capitalize" data-bs-toggle="dropdown" aria-expanded="false">
               {{ request.user.volunteer.name }}
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end">
-              <li><a class="dropdown-item" href="{% url 'volunteer-profile'  request.user.id %}">Profile</a></li>
-              <li><a class="dropdown-item" href="{% url 'volunteer-home' %}">Dashboard</a></li>
+                </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="{% url 'volunteer-profile'  request.user.id %}">Profile</a></li>
+                <li><a class="dropdown-item" href="{% url 'volunteer-home' %}">Dashboard</a></li>
             {% endif %}
+                <li><a class="dropdown-item" href="{% url 'testimonial-create' %}">Post Testimonial</a></li>
                 <li><a class="dropdown-item" href="{% url 'logout' %}">logout</a></li>
               </ul>
             </div>
@@ -109,24 +109,16 @@
     </nav>
     <!----------------- NAVBAR-END --------------------->
 
-    <div class="container-lg">
-
-
+      <div id="body">
         {% block content %}
-
         {% endblock content %}
+      </div>
 
-
-
-     </div>
-    </div>
-
-
-    <footer class="footer mt-auto bg-dark ">
+    <footer id="footer" class="footer bg-dark ">
       <div class="container-sm d-flex justify-content-between align-items-center">
 
         <a href="{% url 'home' %}" class="nav-link px-2 text-bg-dark">
-          &copy; 2023 SkillDonate
+          SkillDonate ©2023
         </a>
 
         <ul class="nav justify-content-center">
@@ -152,8 +144,7 @@
         </ul>
       </div>
     </footer>
-
-
+  </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   </body>
 </html>

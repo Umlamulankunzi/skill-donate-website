@@ -3,7 +3,7 @@
 
 {% block content %}
     <!----------------- HERO SECTION ------------------->
-    <div class="container">
+    <div class="container mb-4">
         <section class="hero text-center mt-2">
           <h2>Unlock the Power of Skill Donation</h2>
           <p class="lead">Welcome to skilldonate, where skills change lives! </p>
@@ -31,19 +31,74 @@
             <a href="{% url 'login' %}" class="btn btn-primary mb-4">Get Started</a>
           {% endif %}
 
+          <!-- FEATURE SECTION -->
+
           <div class="card-group gap-3">
-            <div class="card">
-              <img src="{% static 'images/tutoring.jpg' %}" class="card-img-top h-100" alt="man fixing electrical switch">
+            <div class="card h-100 bg-body-secondary hover-zoom">
+              <img src="{% static 'images/tutoring.jpg' %}" class="card-img-top img-thumbnail" alt="man fixing electrical switch">
+              <div class="card-body">
+                <h5 class="card-title text-primary-emphasis">Donate your Skill </h5>
+                <p class="card-text">
+                  Your skill can make a huge impact for the less fortunate who cannot afford such expertise.
+                  Organisations are looking for your skills.
+                </p>
+              </div>
+              <a href="{% url 'create-skill-donation' %}" class="stretched-link" ></a>
             </div>
-            <div class="card">
-              <img src="{% static 'images/child-looking.jpg' %}" class="card-img-top h-100" alt="child looking">
+
+            <div class="card h-100 bg-body-secondary hover-zoom">
+              <img src="{% static 'images/man-fix.jpg' %}" class="card-img-top img-thumbnail" alt="child looking">
+              <div class="card-body">
+                <h5 class="card-title text-primary-emphasis">Charities find that skill</h5>
+                <p class="card-text">
+                  Charity Organisations, connect with volunteers and find that valuable skill which you
+                  require.
+                </p>
+              </div>
+              <a href="{% url 'volunteers-skills-donated' %}" class="stretched-link" ></a>
             </div>
-            <div class="card">
-              <img src="{% static 'images/tutoring-class.jpg' %}" class="card-img-top h-100" alt="volunteers sweeping street">
+
+            <div class="card h-100 bg-body-secondary hover-zoom">
+              <img src="{% static 'images/tutoring-class.jpg' %}" class="card-img-top img-thumbnail" alt="volunteers sweeping street">
+              <div class="card-body">
+                <h5 class="card-title text-primary-emphasis">Browse skills required</h5>
+                <p class="card-text">
+                  Volunteers browse the list of skills which Charity Organisations are looking for, connect
+                  and make a difference today.
+                </p>
+              </div>
+              <a href="{% url 'charities-skills-required' %}" class="stretched-link" ></a>
             </div>
           </div>
         </section>
+        <!-- END FEATURE -->
+        <div class="container mt-lg-4 mt-md-3 mt-sm-2" >
+          <h3 class="text-center display-6" >Don't take our word, see what others say about the platform.</h3>
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for review in reviews %}
+                <div class="col">
+                  <div class="card h-100 border-0">
+                      <div class="card-body">
+                        {% if testimonial.user.is_charity %}
+                          <h5 class="card-title text-primary"> {{ review.user.charity.name }} </h5>
+                        {% else %}
+                          <h5 class="card-title text-primary"> {{ review.user.volunteer.name }} </h5>
+                        {% endif %}
+                          <p class="card-text"> {{ review.testimony }} </p>
+                      </div>
+                      <div class="card-footer">
+                          <small class="text-body-secondary">{{ review.created_at }}</small>
+                      </div>
+                      <a class="stretched-link" href="{% url 'testimonials' %}"></a>
+                  </div>
+              </div>
+            {% endfor %}
 
-      <!----------------- HERO SECTION END --------------->
+          </div>
+    </div>
+  </div>
+
+
+  <!----------------- HERO SECTION END --------------->
 
 {% endblock content %}

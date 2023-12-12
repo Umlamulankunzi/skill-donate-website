@@ -1,4 +1,6 @@
 /* CUSTOM STYLING */
+
+/*** FORM GLOBAL STYLING ****/
 .asteriskField {
     color: red;
 }
@@ -6,4 +8,72 @@
 .form-label {
     font-weight: bold;
 }
+/***************************/
 
+
+html,
+body {
+  margin:0;
+  padding:0;
+  height:100%;
+}
+
+#container {
+  min-height:100%;
+  position:relative;
+}
+
+#header {
+  padding:10px;
+}
+
+
+#body {
+  padding: 10px;
+  padding-bottom: 80px;   /* Height of the footer */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+#footer {
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:80px;   /* Height of the footer */
+}
+
+
+/* HOVER ON ZOOM CARD STYLING */
+.hover-zoom {
+  transition: all 0.2s;
+}
+
+.hover-zoom:hover {
+  transform: scale(1.05);
+}
+/******************************/
+
+/* SIGNUP PAGES STYLING */
+.signup-title {
+  font-size: 2.5vw;
+  font-weight: bold;
+  color: #0a06ca;
+}
+
+.signup-form {
+  max-width: 500px;
+}
+
+.signup-container {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .signup-title {
+    font-size: 4vw;
+  }
+}
+/********************************/

@@ -4,6 +4,43 @@
 
 {% block content %}
 <div class="container-md">
-    <h1>List testimonials</h1>
+    <h1>Testimonials</h1>
+    {% if request.user.is_authenticated %}
+      <a class="btn btn-outline-success" href="{% url 'testimonial-create' %}">Create Testimonial</a>
+    {% endif %}
+
+    {% if testimonials|length > 0 %}
+      <div class="d-flex container-sm row mt-3">
+        <hr>
+        {% for testimonial in testimonials %}
+            <div class="col-md-6">
+
+              {% if testimonial.user.is_charity %}
+                <h6>{{ testimonial.user.charity.name }}.</h6>
+              {% else %}
+                <h6 class="fw-bold">{{ testimonial.user.volunteer.name }} {{ testimonial.user.volunteer.last_name }}</h6>
+              {% endif %}
+
+              <p>{{ testimonial.testimony }}</p>
+              <p class="text-muted">{{ testimonial.created_at }}</p>
+
+              {% if testimonial.user.id == request.user.id %}
+                <div class="d-flex justify-content-start gap-4">
+                  <a href="{% url 'testimonial-update' testimonial.id %}" class="btn btn-outline-primary">
+                    Edit
+                  </a>
+                  <a href="#" class="btn btn-outline-danger">
+                    Delete
+                  </a>
+                </div>
+              {% endif %}
+              <hr>
+            </div>
+        {% endfor %}
+      </div>
+    {% else %}
+        <p>No Testimonials posted yet.</p>
+    {% endif %}
+
 </div>
 {% endblock content %}

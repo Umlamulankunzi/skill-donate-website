@@ -1,17 +1,22 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.core.mail import send_mail
-from .forms import ContactForm, TestimonialForm
-from django.core.exceptions import PermissionDenied
 from django.contrib.auth.decorators import login_required
+from .models import Testimonial
+from .forms import ContactForm, TestimonialForm
 from skilldonate.settings import EMAIL_HOST_USER
 
 
 def home(request):
-    return render(request, "core/homepage.html")
+    reviews = Testimonial.objects.order_by('-created_at')[:3]
+    context = {
+        'reviews': reviews,
+    }
+    return render(request, "core/homepage.html", context)
 
 def info(request):
     return render(request, "core/how_it_works.html")
 
+@login_required
 def contact(request):
     if request.method == 'POST':
         # process contact info with provided email and message
@@ -44,7 +49,11 @@ def about(request):
 
 
 def testimonials(request):
-    return HttpResponse("list of testimonials")
+    testimonials = Testimonial.objects.all()
+    context = {
+        'testimonials': testimonials
+    }
+    return render(request, "core/testimonials.html", context)
 
 
 @login_required
@@ -65,7 +74,7 @@ def create_testimonial(request):
 
 @login_required
 def update_testimonial(request, testimonial_id):
-    testimonial = TestimonialForm.objects.get(id=testimonial_id)
+    testimonial = Testimonial.objects.get(id=testimonial_id)
 
     if request.method == "POST":
         form = TestimonialForm(request.POST, instance=testimonial)
