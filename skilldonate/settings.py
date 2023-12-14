@@ -103,14 +103,14 @@ DATABASES = {
         'PORT': int(config('MYSQLPORT')),
     },
 
-    'prod_default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': config('DB_NAME'),
-        'USER': config('DB_USER'),
-        'PASSWORD': config('DB_PASSWORD'),
-        'HOST': config('DB_HOST'),
-        'PORT': int(config('DB_PORT')),
-    },
+   # 'prod_default': {
+   #     'ENGINE': 'django.db.backends.mysql',
+   #     'NAME': config('DB_NAME'),
+   #     'USER': config('DB_USER'),
+   #     'PASSWORD': config('DB_PASSWORD'),
+   #     'HOST': config('DB_HOST'),
+   #     'PORT': int(config('DB_PORT')),
+   # },
 }
 
 
