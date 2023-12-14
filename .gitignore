@@ -163,3 +163,5 @@ cython_debug/
 
 info.txt
 .vscode/
+.~lock.sample-data.ods#
+sample-data.ods

@@ -1,9 +1,15 @@
-from django.shortcuts import render, redirect, HttpResponse
+"""
+Core app views
+"""
+
+from django.shortcuts import render, redirect, get_object_or_404
 from django.core.mail import send_mail
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from skilldonate.settings import EMAIL_HOST_USER
 from .models import Testimonial
 from .forms import ContactForm, TestimonialForm
-from skilldonate.settings import EMAIL_HOST_USER
+
 
 
 def home(request):
@@ -13,8 +19,6 @@ def home(request):
     }
     return render(request, "core/homepage.html", context)
 
-def info(request):
-    return render(request, "core/how_it_works.html")
 
 @login_required
 def contact(request):
@@ -37,10 +41,11 @@ def contact(request):
         recipient_list = ['umlamulankunzi@gmail.com', ]
 
         # Send the email
-        send_mail( subject, message, from_email, recipient_list)
+        send_mail(subject, message, from_email, recipient_list)
 
         # Redirect after success
-        return HttpResponse(f"Form Submitted\n{message}")
+        messages.success(request, 'Message sent successfully.')
+        return redirect('contact')
 
     return render(request, "core/contact.html", {'form': form})
 
@@ -66,6 +71,7 @@ def create_testimonial(request):
             testimony = form.save(commit=False)
             testimony.user = request.user
             testimony.save()
+            messages.success(request, "Review created successfully")
             return redirect('testimonials')
     else:
         form = TestimonialForm()
@@ -80,6 +86,7 @@ def update_testimonial(request, testimonial_id):
         form = TestimonialForm(request.POST, instance=testimonial)
         if form.is_valid():
             form.save()
+            messages.success(request, "Updated successfully")
             return redirect('testimonials')
     else:
         form = TestimonialForm(instance=testimonial)
@@ -89,3 +96,10 @@ def update_testimonial(request, testimonial_id):
             'form': form,
             'testimonial_id': testimonial.id,
         })
+
+
+def delete_testimonial(request, testimonial_pk):
+    testimonial = get_object_or_404(Testimonial, pk=testimonial_pk)
+    testimonial.delete()
+    messages.warning(request, 'Review deleted Successfully')
+    return redirect('testimonials')

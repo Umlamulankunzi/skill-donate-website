@@ -7,14 +7,14 @@
 {% endblock custom_styling %}
 
 
-
 {% block content %}
-<div class="justify-content-center testimonial-c-container">
-    <h3 class="fw-bold text-center">Update Testimonial</h3>
+<div class="bg-body-secondary p-3 justify-content-center review-form-container">
+    <h3 class="text-center display-6 text-primary">Update Testimonial</h3>
     <form  class="form" method="POST" action="{% url 'testimonial-update' testimonial_id %}">
         {% csrf_token %}
         {{ form | crispy }}
-        <button class="btn btn-primary testimonial-c-btn" type="submit">Update</button>
+        <button class="btn btn-primary testimonial-btn" type="submit">Update</button>
+        <a class="btn btn-warning testimonial-btn ms-4" href="{% url 'testimonials' %}" >cancel</a>
     </form>
 </div>
 {% endblock content %}

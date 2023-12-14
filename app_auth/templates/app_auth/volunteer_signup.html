@@ -9,7 +9,10 @@
         {{ form | crispy }}
         <input class="btn btn-primary" type="submit" value="Signup">
     </form>
-    <p>Already registered?</p>
-    <a class="link-primary" href="{% url 'login' %}">Login Now</a><br>
+    <p>
+        Already registered?
+        <a class="link-primary" href="{% url 'login' %}">Login Now</a>
+    </p>
+
 </div>
 {% endblock content %}

@@ -1,17 +1,22 @@
-from django.shortcuts import render, HttpResponse, get_object_or_404, redirect
+""" Charity App Views """
+
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.urls import reverse
 
-from app_auth.models import User, Volunteer, Charity
+from app_auth.models import User, Charity
+from volunteer.models import InterestInSkillRequired, SkillDonated
+
 from .forms import ProfileUpdateForm, SkillRequiredForm
 from .decorators import charity_required
 from .models import SkillRequired, InterestInSkillDonated
-from volunteer.models import InterestInSkillRequired, SkillDonated
+
+
 
 # Create your views here.
 def charities(request):
     return render(request, "charity/charity_index.html")
-
 
 
 @login_required
@@ -32,6 +37,7 @@ def update_profile(request, user_id):
         if form.is_valid():
             form.save()
             url = reverse('charity-profile', args=[user_id])
+            messages.success(request, "Profile updated successfully")
             return redirect(url)
     else:
         form = ProfileUpdateForm(instance=charity)
@@ -63,7 +69,8 @@ def skill_required_detail(request, skill_required_id):
     skill_required = SkillRequired.objects.get(id=skill_required_id)
     # if skill_required.charity != request.user.charity:
     #     return redirect('charity-home')
-    volunteer_interest = InterestInSkillRequired.objects.filter(skill_required=skill_required)
+    volunteer_interest = InterestInSkillRequired.objects.filter(
+        skill_required=skill_required)
     context = {
         'skill_required': skill_required,
         'volunteers_interested': volunteer_interest
@@ -82,20 +89,17 @@ def create_skill_request(request):
             skill = form.save(commit=False)
             skill.charity = request.user.charity
             skill.save()
+            messages.success(request, "Skill Request posted successfully")
             return redirect('charity-home')
     else:
         form = SkillRequiredForm()
     return render(request, 'charity/create_skill_request.html', {'form': form})
 
 
-
 @login_required
 @charity_required
 def update_skill_required(request, skill_required_id):
     skill_required = SkillRequired.objects.get(id=skill_required_id)
-    # if request.user.id != skill_donated.volunteer.user.id:
-    #     url = reverse('volunteer-home', args=[request.user.id])
-    #     return redirect(url)
     skill_id = skill_required.id
 
     if request.method == "POST":
@@ -104,9 +108,11 @@ def update_skill_required(request, skill_required_id):
         if form.is_valid():
             form.save()
             url = reverse('skill-required-detail', args=[skill_required.id])
+            messages.success(request, "Skill Request updated successfully")
             return redirect(url)
     else:
         form = SkillRequiredForm(instance=skill_required)
+
     return render(
         request, 'charity/update_skill_required.html',
         {'form': form, 'skill_id': skill_id, })
@@ -140,4 +146,6 @@ def show_interest_in_skill_donated(request, skill_donated_id):
         interest.skill_donated = skill
         interest.save()
         url = reverse('skill-donated-detail', args=[skill.id])
+        messages.success(
+            request, "Successfully shown interest in donated skill")
         return redirect(url)

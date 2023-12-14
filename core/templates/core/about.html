@@ -2,12 +2,153 @@
 {% load static %}
 
 {% block content %}
-    <h1>About Us</h1>
-    <p>
-        Skill Donate is a platform where voluntee can offer their skills as donations to non profits, or show interest and take up skills posted by non profits as required by said non profits.
-    </p>
-    <p>
-        The website also provides a platform for nonprofits to post skills they require and to browse skills ofered by volunteers posted on the website.
-    </p>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 text-center">
+            <h1 class="display-6 text-primary fw-semibold">About Us</h1>
+            <p class="lead">
+                Skill Donate is a platform where volunteers can offer their skills as donations to non-profits,
+                or show interest and take up skills posted by non-profits as required.
+            </p>
+            <p>
+                The website also provides a platform for nonprofits to post skills they require and to browse
+                skills offered by volunteers posted on the website.
+            </p>
+        </div>
+        <img src="{% static 'images/handshake-banner.jpg' %}" height="270vh">
+    </div>
+    <div class="row mx-1 mt-3 mb-3 pb-3 pt-2 text-bg-secondary">
+        <div class="col-md-6">
+            <h3 class="text-center">Volunteers</h3>
+            <p class="text-center" >
+                Volunteers who wish to engage with Charity Organizations by donating their skills and time can
+                use the Skill Donate platform to register a simple account and start offering their skills
+                for donation. They can also offer to donate to skill requirements posted by Charity
+                Organizations.
+            </p>
+            <p class="text-center fw-bold" >As a Volunteer, you can:</p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <a class="nav-link text-primary" href="{% url 'signup-volunteer' %}">
+                        <b>Create an account:</b>
+                    </a>
+                    Sign up as a volunteer on Skill Donate by providing your personal information and
+                    creating a secure login.
+                </li>
+                <li class="list-group-item">
+                    <a class="nav-link text-primary" href="{% url 'charities-skills-required' %}">
+                        <b>Browse Skill Requirements:</b>
+                    </a>
+                    As a volunteer, you can browse through the skill requirements posted by non-profit
+                    organizations.
+                </li>
+                <li class="list-group-item">
+                    <a class="nav-link text-primary" href="{% url 'create-skill-donation' %}">
+                        <b>Post Skill Donations:</b>
+                    </a>
+                    Also, as a volunteers can post the specific skills they would like to donate on the
+                    platform and wait for Charity Organizations to show interest in the donated skills.
+                </li>
+                <li class="list-group-item">
+                    <a class="nav-link text-primary" href="{% url 'testimonials' %}">
+                        <b>Sharing experiences:</b>
+                    </a>
+                    Volunteers can also post testimonials on the platform, sharing their experiences
+                    of working with Charity Organisations.
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-6 gap-sm-2 ">
+            <h3 class="text-center">Charity Organizations</h3>
+            <p class="text-center">
+                Charity Organizations who are seeking donations in the form of skills from skilled
+                volunteers can register on the platform and connect with volunteers wishing to donate
+                their skills. Charity Organizations can also browse donated skills posted by volunteers
+                organizations.
+            </p>
+            <p class="text-center fw-bold">As a Charity Organization, you can:</p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <a class="nav-link text-primary" href="{% url 'signup-volunteer' %}">
+                        <b>Create an account:</b>
+                    </a>
+                    Charity organizations can register on the Skill Donate platform to access the full features
+                    and functionalities.
+                </li>
+                <li class="list-group-item">
+                    <a class="nav-link text-primary" href="{% url 'volunteers-skills-donated' %}">
+                        <b>Browse Donated Skills:</b>
+                    </a>
+                    Browse the skills posted by volunteers and select the ones they
+                    require for their projects or initiatives.
+                </li>
+                <li class="list-group-item">
+                    <a class="nav-link text-primary" href="{% url 'create-skill-required' %}">
+                        <b>Post Skill Requirements:</b>
+                    </a>
+                    Alternatively, Charity Organizations can post the specific skills they require on the platform
+                    and wait for volunteers to show interest and offer their skills.
+                </li>
+                <li class="list-group-item">
+                    <a class="nav-link text-primary" href="{% url 'testimonials' %}">
+                        <b>Sharing experiences:</b>
+                    </a>
+                    Charity Organizations can also post testimonials on the platform, sharing their experiences
+                    of working with skilled volunteers.
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <h2 class="display-6">The Developer</h2>
+                <p class="lead">
+                    Meet the talented developer behind this website.
+                </p>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-sm-6">
+                <img src="{% static 'images/dev-image.png' %}" alt="Developer Photo" class="h-75 img-fluid rounded-circle border">
+            </div>
+            <div class="col-sm-6">
+                <h3>Prince D Jele</h3>
+                <p>
+                    PD Jele is a skilled and experienced developer who has been instrumental in creating this website.
+                    With a strong background in web development and a passion for creating user-friendly and visually
+                    appealing websites, Prince has brought this project to life.
+                </p>
+                <p class="mb-0 pb-0">As the sole developer, Prince has:</p>
+                <ul class="list-group list-group-flush border-bottom mb-2">
+                    <li class="list-group-item text-success-emphasis">
+                        Implemented the front-end design using HTML, CSS, and Bootstrap to create an intuitive and
+                        responsive user interface.
+                    </li>
+                    <li class="list-group-item text-success-emphasis">
+                        Developed the back-end functionality using python Django web framework and integrated
+                        with a MySQL database to store and retrieve data.
+                    </li>
+                    <li class="list-group-item text-success-emphasis">
+                        Ensured the website's performance, security, and scalability by optimizing code and
+                        implementing best practices.
+                    </li>
+                </ul>
+                <p>For any inquiries or collaboration opportunities you can reach Prince D Jele on:</p>
+                <ul>
+                    <li><a href="mailto:umlamulankunzi.gmail.com" class="link-primary">Email</a></li>
+                    <li><a href="https://github.com/umlamulankunzi" class="link-primary">Github</a></li>
+                    <li><a href="https://facebook.com/princetronixx" class="link-primary" >Facebook</a></li>
+                </ul>
+                <p class="text-muted">
+                    With a strong attention to detail and a commitment to delivering high-quality work, Prince has
+                    successfully brought the vision of this website to reality.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 {% endblock content %}

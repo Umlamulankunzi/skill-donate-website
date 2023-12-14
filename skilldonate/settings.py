@@ -35,6 +35,7 @@ ALLOWED_HOSTS = ['*', ]
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -100,6 +101,15 @@ DATABASES = {
         'PASSWORD': config('MYSQL_ROOT_PASSWORD'),
         'HOST': config('MYSQLHOST'),
         'PORT': int(config('MYSQLPORT')),
+    },
+
+    'prod_default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': int(config('DB_PORT')),
     },
 }
 
