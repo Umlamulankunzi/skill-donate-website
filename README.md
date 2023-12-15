@@ -63,6 +63,28 @@ To run SkillDonate locally, follow these steps:
 
 8. Access SkillDonate in your web browser at `http://localhost:8000`.
 
+## Author
+
+- [@Prince D Jele](https://www.github.com/umlamulankunzi)
+
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`DEV_ENV`
+`ENV`
+`SECRET_KEY`
+`MYSQL_DATABASE`
+`MYSQLUSER`
+`MYSQL_ROOT_PASSWORD`
+`MYSQLHOST`
+`MYSQLPORT`
+`EMAIL_HOST`
+`EMAIL_PORT`
+`EMAIL_HOST_USER`
+`EMAIL_HOST_PASSWORD`
+
 ## Contributing
 
 We welcome contributions to enhance SkillDonate and make it even more impactful. To contribute, please follow these steps:
