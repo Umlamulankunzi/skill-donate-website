@@ -103,14 +103,14 @@ DATABASES = {
         'PORT': int(config('MYSQLPORT')),
     },
 
-   # 'prod_default': {
-   #     'ENGINE': 'django.db.backends.mysql',
-   #     'NAME': config('DB_NAME'),
-   #     'USER': config('DB_USER'),
-   #     'PASSWORD': config('DB_PASSWORD'),
-   #     'HOST': config('DB_HOST'),
-   #     'PORT': int(config('DB_PORT')),
-   # },
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': config('DB_NAME'),
+#        'USER': config('DB_USER'),
+#        'PASSWORD': config('DB_PASSWORD'),
+#        'HOST': config('DB_HOST'),
+#        'PORT': int(config('DB_PORT')),
+#    },
 }
 
 
@@ -168,6 +168,9 @@ STATICFILES_DIRS = (
 
 STORAGES = {
     # ...
+    "default":{
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
@@ -175,6 +178,8 @@ STORAGES = {
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -185,3 +190,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Crispy forms settings
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+
+# image resize package
+DJANGORESIZED_DEFAULT_SIZE = [1920, 1080]
+DJANGORESIZED_DEFAULT_SCALE = 0.5
+DJANGORESIZED_DEFAULT_QUALITY = 75
+DJANGORESIZED_DEFAULT_KEEP_META = True
+DJANGORESIZED_DEFAULT_FORCE_FORMAT = 'JPEG'
+DJANGORESIZED_DEFAULT_FORMAT_EXTENSIONS = {'JPEG': ".jpg"}
+DJANGORESIZED_DEFAULT_NORMALIZE_ROTATION = True

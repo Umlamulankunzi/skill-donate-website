@@ -19,6 +19,7 @@ class VolunteerSignUpForm(UserCreationForm):
     phone = forms.CharField(widget=forms.TextInput())
     city = forms.CharField(widget=forms.TextInput(), required=False)
     country = forms.CharField(widget=forms.TextInput(), required=False, initial="zimbabwe")
+    profile_pic = forms.ImageField(widget=forms.FileInput(), required=False)
 
     class Meta(UserCreationForm.Meta):
         model = User
@@ -38,6 +39,7 @@ class VolunteerSignUpForm(UserCreationForm):
             phone=self.cleaned_data.get('phone'),
             city=self.cleaned_data.get('city'),
             country=self.cleaned_data.get('country'),
+            profile_pic=self.cleaned_data.get('profile_pic'),
             )
         return user
 
@@ -50,6 +52,7 @@ class CharitySignUpForm(UserCreationForm):
     description = forms.CharField(widget=forms.Textarea(attrs={'rows': 3}))
     city = forms.CharField(widget=forms.TextInput())
     country = forms.CharField(widget=forms.TextInput())
+    profile_pic = forms.ImageField(widget=forms.FileInput(), required=False)
 
     class Meta(UserCreationForm.Meta):
         model = User
@@ -68,5 +71,6 @@ class CharitySignUpForm(UserCreationForm):
             description=self.cleaned_data.get('description'),
             city=self.cleaned_data.get('city'),
             country=self.cleaned_data.get('country'),
+            profile_pic=self.cleaned_data.get('profile_pic'),
             )
         return user

@@ -82,10 +82,11 @@ def update_profile(request, volunteer_id):
 
     if request.method == "POST":
         # Update the profile and redirect to profile
-        form = ProfileUpdateForm(request.POST, instance=volunteer)
+        form = ProfileUpdateForm(request.POST, request.FILES, instance=volunteer)
         if form.is_valid():
             form.save()
             url = reverse('volunteer-profile', args=[user.id])
+            messages.success(request, "Profile Updated Successfully")
             return redirect(url)
 
     else:
@@ -282,7 +283,7 @@ def update_skill_donated(request, skill_donated_id):
 
     if request.method == "POST":
         # Update the profile and redirect to profile
-        form = SkillDonateForm(request.POST, instance=skill_donated)
+        form = SkillDonateForm(request.POST, request.FILES, instance=skill_donated)
         if form.is_valid():
             form.save()
             url = reverse('skill-donated-detail', args=[skill_donated.id])

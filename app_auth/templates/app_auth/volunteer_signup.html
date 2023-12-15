@@ -4,7 +4,7 @@
 {% block content %}
 <div class="signup-container">
     <h1 class="signup-title text-center">Volunteer Signup</h1>
-    <form action="{% url 'signup-volunteer' %}" method="POST">
+    <form action="{% url 'signup-volunteer' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form | crispy }}
         <input class="btn btn-primary" type="submit" value="Signup">

@@ -23,7 +23,8 @@ class ProfileUpdateForm(forms.ModelForm):
     description = forms.CharField(widget=forms.Textarea(attrs={'rows': 3}))
     city = forms.CharField(widget=forms.TextInput())
     country = forms.CharField(widget=forms.TextInput())
+    profile_pic = forms.ImageField(label="Profile Picture", required=False)
 
     class Meta:
         model = Charity
-        fields = ('name', 'description', 'city', 'country')
+        fields = ('name', 'description', 'city', 'country', 'profile_pic')

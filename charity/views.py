@@ -33,7 +33,7 @@ def update_profile(request, user_id):
     charity = Charity.objects.get(user=request.user)
     if request.method == "POST":
         # Update the profile and redirect to profile
-        form = ProfileUpdateForm(request.POST, instance=charity)
+        form = ProfileUpdateForm(request.POST, request.FILES , instance=charity)
         if form.is_valid():
             form.save()
             url = reverse('charity-profile', args=[user_id])

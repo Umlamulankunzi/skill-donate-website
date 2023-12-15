@@ -2,6 +2,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, UserManager
 from django.utils import timezone
+from django_resized import ResizedImageField
 
 
 class CustomUserManager(UserManager):
@@ -68,14 +69,11 @@ class Charity(models.Model):
     city = models.CharField(max_length=255)
     country = models.CharField(max_length=255, default="zimbabwe")
     created_at = models.DateTimeField(default=timezone.now)
+    profile_pic = ResizedImageField(
+        size=[700, 400],
+        upload_to="charity/profiles/",
+        default="/media/charity/profiles/default.jpg")
 
-    def get_display_name(self):
-        """Gets name to display in navbar of website
-        """
-        display_name = name.split()[0]
-        if len(display_name) > 10:
-            return f"{display_name[:10]}.."
-        return display_name
 
 
 class Volunteer(models.Model):
@@ -88,11 +86,7 @@ class Volunteer(models.Model):
     city = models.CharField(max_length=255)
     country = models.CharField(max_length=255, default="zimbabwe")
     created_at = models.DateTimeField(default=timezone.now)
-
-    def get_display_name(self):
-        """Gets name to display in navbar of website
-        """
-        display_name = self.name.split()[0]
-        if len(display_name) > 10:
-            return f"{display_name[:10]}.."
-        return display_name
+    profile_pic = ResizedImageField(
+        size=[700, 400],
+        upload_to="volunteer/profiles/",
+        default="/media/volunteer/profiles/default.jpg")
