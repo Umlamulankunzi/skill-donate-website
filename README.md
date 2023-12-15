@@ -72,18 +72,18 @@ To run SkillDonate locally, follow these steps:
 
 To run this project, you will need to add the following environment variables to your .env file
 
-`DEV_ENV`
-`ENV`
-`SECRET_KEY`
-`MYSQL_DATABASE`
-`MYSQLUSER`
-`MYSQL_ROOT_PASSWORD`
-`MYSQLHOST`
-`MYSQLPORT`
-`EMAIL_HOST`
-`EMAIL_PORT`
-`EMAIL_HOST_USER`
-`EMAIL_HOST_PASSWORD`
+`DEV_ENV`  
+`ENV`  
+`SECRET_KEY`  
+`MYSQL_DATABASE`  
+`MYSQLUSER`  
+`MYSQL_ROOT_PASSWORD`  
+`MYSQLHOST`  
+`MYSQLPORT`  
+`EMAIL_HOST`  
+`EMAIL_PORT`  
+`EMAIL_HOST_USER`  
+`EMAIL_HOST_PASSWORD`  
 
 ## Contributing
 
