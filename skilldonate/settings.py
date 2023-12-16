@@ -10,12 +10,15 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 #for env variables
-from decouple import config
 from pathlib import Path
+from decouple import config
+from google.oauth2 import service_account
+from .import config_auth_key
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+config_auth_key.init()
 
 
 # Quick-start development settings - unsuitable for production
@@ -168,9 +171,13 @@ STATICFILES_DIRS = (
 
 STORAGES = {
     # ...
-    "default":{
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    "default": {
+        "BACKEND": "skilldonate.gcloud.GoogleCloudMediaFileStorage",
+        "OPTIONS": {
+        #   ...your_options_here
+        }
     },
+
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
@@ -178,8 +185,20 @@ STORAGES = {
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-MEDIA_ROOT = BASE_DIR / 'media'
-MEDIA_URL = '/media/'
+
+GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+    BASE_DIR / 'creds.json')
+
+###configuration for media file storing and reriving media file from gcloud
+# DEFAULT_FILE_STORAGE='skilldonate.gcloud.GoogleCloudMediaFileStorage'
+GS_PROJECT_ID = 'esoteric-buffer-408213'
+GS_BUCKET_NAME = 'skd-bucket'
+MEDIA_ROOT = "media/"
+UPLOAD_ROOT = 'media/'
+MEDIA_URL = 'https://storage.googleapis.com/{}/'.format(GS_BUCKET_NAME)
+
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

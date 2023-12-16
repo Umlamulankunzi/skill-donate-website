@@ -70,9 +70,9 @@ class Charity(models.Model):
     country = models.CharField(max_length=255, default="zimbabwe")
     created_at = models.DateTimeField(default=timezone.now)
     profile_pic = ResizedImageField(
-        size=[700, 400],
+        size=[900, 500],
         upload_to="charity/profiles/",
-        default="/media/charity/profiles/default.jpg")
+        default="charity/profiles/default.jpg")
 
 
 
@@ -87,6 +87,6 @@ class Volunteer(models.Model):
     country = models.CharField(max_length=255, default="zimbabwe")
     created_at = models.DateTimeField(default=timezone.now)
     profile_pic = ResizedImageField(
-        size=[700, 400],
+        size=[900, 500],
         upload_to="volunteer/profiles/",
-        default="/media/volunteer/profiles/default.jpg")
+        default="volunteer/profiles/default.jpg")
