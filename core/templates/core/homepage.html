@@ -79,7 +79,7 @@
                 <div class="col">
                   <div class="card h-100 border-0">
                       <div class="card-body">
-                        {% if testimonial.user.is_charity %}
+                        {% if review.user.is_charity %}
                           <h5 class="card-title text-primary"> {{ review.user.charity.name }} </h5>
                         {% else %}
                           <h5 class="card-title text-primary"> {{ review.user.volunteer.name }} </h5>
